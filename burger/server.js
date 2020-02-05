@@ -8,7 +8,8 @@ var app = express();
 app.use(express.static("public"));
 var routes = require("../burger/controllers/burger_controller");
 app.use(express.static(__dirname + "/public/css"));
-app.use(express.static(__dirname + "/public/js"))
+app.use(express.static(__dirname + "/public/js"));
+app.use(express.static("public"));
 console.log(__dirname + "/app/public/css");
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
