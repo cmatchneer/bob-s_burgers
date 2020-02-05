@@ -7,14 +7,15 @@ var Burger = require("../models/burger_model");
 router.get("/", function(req, res) {
     Burger.findAll({}).then(function(response) {
         console.log(res.json(response));
-        res.render("index");
+        response.sendFile(path.join(__dirname, "../public/index.html"));
     })
 });
-router.post("api/burgers", function(req, res) {
+router.post("/api/burgers", function(req, res) {
     Burger.create({
-        burger: "Rest in Peas Burger",
+        name: req.body.name,
         eaten: false
     }).then(function(response) {
+        res.json(response);
         res.end();
     })
 })
