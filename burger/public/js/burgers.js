@@ -27,6 +27,7 @@ $(document).ready(function() {
         $.post("/api/burgers", newBurger).then(function(response) {
 
             console.log(response);
+            location.reload();
         })
     })
 
