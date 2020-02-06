@@ -17,25 +17,28 @@
 <body>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">Welcome to Bob's Burgers</h1>
-            <p class="lead">Welcome please enter the burger you want to eat</p>
+            <h1 class="display-4">Bob's Burgers</h1>
+            <p class="lead">Come meet our family let us meat you</p>
         </div>
     </div>
-    <form>
-        <div class="form-group">
+    <div id="background">
+        <form>
 
-            <input type="text" class="form-control" id="burger-name" aria-describedby="burgerName" placeholder="Yummy Burgers">
-            <small id="text" class="form-text text-muted">Tell us what burger you want</small>
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="burger-name" aria-describedby="burgerName" placeholder="Burger of the Day">
+                <small id="text" class="form-text text-muted">Tell us what burger you want</small>
+            </div>
+
+
+            <button id="burger-add" type="submit" class="btn btn-primary">Place Your Order</button>
+        </form>
+        <div class="status" id="uneaten">
+            <h3>Ready to Be Eaten</h3>
         </div>
-
-
-        <button id="burger-add" type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <div class="status" id="uneaten">
-        <h3>Ready to Be Eaten</h3>
-    </div>
-    <div class="status" id="eaten">
-        <h3>The Burgers You have Enjoyed</h3>
+        <div class="status" id="eaten">
+            <h3>The Burgers You have Enjoyed</h3>
+        </div>
     </div>
 
 </body>

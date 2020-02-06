@@ -1,25 +1,53 @@
+body {
+    background: lime;
+    color: red;
+}
+
 div {
     margin: 0 auto;
     text-align: center;
+    color: red;
+    background: yellow;
 }
 
 h3 {
     text-align: center;
-    color: black;
+    color: red;
+    border-bottom: 1px red solid;
+    padding-bottom: 3px;
+    margin-bottom: 3px;
 }
 
 form {
     width: 80%;
     margin: 0 auto;
     text-align: center;
+    background: yellow;
+    color: red;
+    border: 5px red solid;
 }
 
 input {
     text-align: center;
 }
 
+.jumbotron {
+    background: lime;
+    color: red;
+}
+
+.container {
+    background: yellow;
+    border: 5px red solid;
+}
+
 .burgers {
-    margin: 5px;
+    margin: 5px auto;
+    text-align: center;
+    width: 80%;
+    background: white;
+    color: black;
+    border: 1px yellow solid;
 }
 
 .status {
@@ -28,4 +56,35 @@ input {
     margin-top: 10px;
     float: left;
     text-align: center;
+}
+
+.done {
+    margin: 5px auto;
+    text-align: center;
+    width: 80%;
+    background: gray;
+    color: black;
+    border: 1px yellow solid;
+}
+
+#eaten {
+    margin-left: 150px;
+    border: 5px red solid;
+}
+
+#uneaten {
+    margin-left: 50px;
+    border: 5px red solid;
+}
+
+#burger-add {
+    background: lime !important;
+    color: red !important;
+    border: 2px red solid !important;
+    margin-bottom: 2px;
+}
+
+#background {
+    height: 1000px;
+    background-image: url("../pics/store-front.jpg");
 }
