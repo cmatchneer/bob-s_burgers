@@ -8,9 +8,24 @@ h3 {
     color: black;
 }
 
+form {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+input {
+    text-align: center;
+}
+
+.burgers {
+    margin: 5px;
+}
+
 .status {
     width: 40%;
     margin-left: 30px;
+    margin-top: 10px;
     float: left;
     text-align: center;
 }

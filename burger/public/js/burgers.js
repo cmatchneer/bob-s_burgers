@@ -4,14 +4,21 @@ $(document).ready(function() {
         if (response.length !== 0) {
             for (var i = 0; i < response.length; i++) {
                 var div = $("<div>");
-                var name = $("<p>");
-                div.attr("id", response[i].id);
-                name.text(response[i].name);
-                div.append(name);
+                div.text(response[i].name);
                 if (response[i].eaten) {
+                    div.attr({
+                        class: "done",
+                        id: response[i].id
+
+                    });
                     $("#eaten").append(div);
                 }
                 if (!response[i].eaten) {
+                    div.attr({
+                        class: "burgers",
+                        id: response[i].id
+
+                    });
                     $("#uneaten").append(div);
                 }
             }
@@ -30,9 +37,16 @@ $(document).ready(function() {
             location.reload();
         })
     })
+    $("#uneaten").on("click", ".burgers", function() {
+        var id = this.id;
+        console.log(this.id);
+        $.ajax("/api/eat" + id, {
+            type: "PUT",
 
-
-
-
+        }).then(function(response) {
+            console.log(response);
+            location.reload();
+        })
+    })
 
 });

@@ -19,5 +19,15 @@ router.post("/api/burgers", function(req, res) {
         res.end();
     })
 })
+router.put("/api/eat:id", function(req, res) {
+    console.log(req.params.id);
+    Burger.update({
+        eaten: true
+    }, {
+        where: { id: req.params.id }
+    }).then(function(response) {
+        res.json(response);
+    })
+})
 
 module.exports = router;
