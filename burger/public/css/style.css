@@ -47,7 +47,15 @@ input {
     width: 80%;
     background: white;
     color: black;
-    border: 1px yellow solid;
+    border: 1px red solid;
+    cursor: pointer;
+    background-color: lime;
+    color: red;
+}
+
+.burgers:active {
+    box-shadow: 0 0px 5px red;
+    transform: translateY(2px);
 }
 
 .status {
@@ -75,6 +83,7 @@ input {
 #uneaten {
     margin-left: 50px;
     border: 5px red solid;
+    padding: 5px;
 }
 
 #burger-add {
