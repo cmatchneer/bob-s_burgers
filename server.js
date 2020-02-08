@@ -6,7 +6,7 @@ var app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
-var routes = require("../burger/controllers/burger_controller");
+var routes = require("../controllers/burger_controller");
 app.use(express.static(__dirname + "/public/css"));
 app.use(express.static(__dirname + "/public/js"));
 app.use(express.static("public"));
