@@ -1,6 +1,10 @@
 $(document).ready(() => {
+    var sound = document.createElement('audio');
     $.get("/api/allBurgers", (response) => {
         console.log(response);
+        // sound.setAttribute("src", "../audio/intro.m4a");
+        // sound.play();
+
         if (response.length !== 0) {
             for (var i = 0; i < response.length; i++) {
                 var div = $("<div>");
@@ -44,6 +48,9 @@ $(document).ready(() => {
         }
         if (order === false) {
             alert("please order a burger");
+            $("#burger-name").val("")
+            sound.setAttribute("src", "../audio/omg.m4a");
+            sound.play();
         }
 
     })
