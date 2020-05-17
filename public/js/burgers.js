@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $.get("/api/allBurgers", function(response) {
+$(document).ready(() => {
+    $.get("/api/allBurgers", (response) => {
         console.log(response);
         if (response.length !== 0) {
             for (var i = 0; i < response.length; i++) {
@@ -24,21 +24,31 @@ $(document).ready(function() {
             }
         }
     })
-    $("#burger-add").on("click", function(add_to) {
-        console.log("test");
+    $("#burger-add").on("click", (add_to) => {
+        console.log($("#burger-name").val().split(" "));
         add_to.preventDefault();
-        var newBurger = {
+        let order = false;
+        const newBurger = {
             name: $("#burger-name").val().trim(),
             eaten: false
         }
-        $.post("/api/burgers", newBurger).then(function(response) {
+        for (let i = 0; i < $("#burger-name").val().split(" ").length; i++) {
+            if ($("#burger-name").val().split(" ")[i] === "burger") {
+                order = true;
+                $.post("/api/burgers", newBurger).then((response) => {
 
-            console.log(response);
-            location.reload();
-        })
+                    console.log(response);
+                    location.reload();
+                })
+            }
+        }
+        if (order === false) {
+            alert("please order a burger");
+        }
+
     })
-    $("#uneaten").on("click", ".burgers", function() {
-        var id = this.id;
+    $("#uneaten").on("click", ".burgers", () => {
+        const id = this.id;
         console.log(this.id);
         $.ajax("/api/eat" + id, {
             type: "PUT",
