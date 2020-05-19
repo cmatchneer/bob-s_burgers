@@ -1,9 +1,12 @@
 var express = require("express");
 
 var router = express.Router();
-
+var burgerOfTheDay = require("../burgersOfTheDay.json");
 var Burger = require("../models/burger_model");
-
+router.get("/api/burgersOfTheDay", function(req, res) {
+    console.log(burgerOfTheDay[Math.floor(Math.random() * burgerOfTheDay.length)]);
+    res.json(burgerOfTheDay[Math.floor(Math.random() * burgerOfTheDay.length)]);
+})
 router.get("/api/allBurgers", function(req, res) {
     Burger.findAll({}).then(function(response) {
         console.log(res.json(response));

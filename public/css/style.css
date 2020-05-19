@@ -97,3 +97,10 @@ input {
     height: 1000px;
     background-image: url("../pics/store-front.jpg");
 }
+
+#burger-of-the-day {
+    background: lime !important;
+    color: red !important;
+    border: 2px red solid !important;
+    margin-bottom: 2px;
+}

@@ -1,5 +1,6 @@
 $(document).ready(() => {
-    var sound = document.createElement('audio');
+    const sound = document.createElement('audio');
+
     $.get("/api/allBurgers", (response) => {
         console.log(response);
         // sound.setAttribute("src", "../audio/intro.m4a");
@@ -28,6 +29,23 @@ $(document).ready(() => {
             }
         }
     })
+    $("#burger-of-the-day").on("click", (add_to) => {
+        $.get("/api/burgersOfTheDay", function(response) {
+            sound.setAttribute("src", "../audio/burger.m4a");
+            sound.play();
+            const burgerOfTheDay = {
+                name: response,
+                eaten: false
+            }
+            console.log(burgerOfTheDay);
+            sound.onended = function() {
+                $.post("/api/burgers", burgerOfTheDay).then((response) => {
+                    console.log(response);
+                    location.reload();
+                })
+            }
+        })
+    })
     $("#burger-add").on("click", (add_to) => {
         console.log($("#burger-name").val().split(" "));
         add_to.preventDefault();
@@ -37,7 +55,7 @@ $(document).ready(() => {
             eaten: false
         }
         for (let i = 0; i < $("#burger-name").val().split(" ").length; i++) {
-            if ($("#burger-name").val().split(" ")[i] === "burger") {
+            if ($("#burger-name").val().split(" ")[i].toLowerCase() === "burger") {
                 order = true;
                 $.post("/api/burgers", newBurger).then((response) => {
 
@@ -47,22 +65,34 @@ $(document).ready(() => {
             }
         }
         if (order === false) {
-            alert("please order a burger");
-            $("#burger-name").val("")
             sound.setAttribute("src", "../audio/omg.m4a");
             sound.play();
+            alert("please order a burger");
+            $("#burger-name").val("")
         }
 
     })
-    $("#uneaten").on("click", ".burgers", () => {
+    $("#burger-of-the-day").on("click", (add_to) => {
+        add_to.preventDefault();
+        // $.post("/api/burgers", newBurger).then((response) => {
+        //     console.log(response);
+        //     location.reload();
+        // })
+    })
+    $("#uneaten").on("click", ".burgers", function() {
         const id = this.id;
         console.log(this.id);
+
         $.ajax("/api/eat" + id, {
             type: "PUT",
 
         }).then(function(response) {
             console.log(response);
-            location.reload();
+            sound.setAttribute("src", "../audio/clean-plate.m4a");
+            sound.play();
+            sound.onended = function() {
+                location.reload();
+            }
         })
     })
 
